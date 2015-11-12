@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: concurso
+        psr4_prefix: concurso
+        src_path: app
