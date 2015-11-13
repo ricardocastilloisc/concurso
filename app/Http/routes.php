@@ -27,7 +27,6 @@ Route::get('product/{slug}',[
 	]);
 //carito 
 
-
 Route::get('cart/show',	[
 	'as' => 'cart-show',
 	'uses' => 'CartController@show' 
@@ -53,6 +52,45 @@ Route::get('cart/update/{product}/{quantity}',
 		'as' => 'cart-update',
 		'uses' => 'CartController@update' 
 	]);
+
+Route::get('order-detail',
+	[
+		'middleware' => 'auth',
+		'as' => 'order-detail',
+		'uses' => 'CartController@orderDetail' 
+	]);
+
+
+ 
+
+
+// Authentication routes...
+Route::get('auth/login', [
+		'as' => 'login-get',
+		'uses' => 'Auth\AuthController@getLogin'
+	]);
+Route::post('auth/login', [
+		'as' => 'login-post',
+		'uses' =>'Auth\AuthController@postLogin'
+	]);
+Route::get('auth/logout', [
+		'as' => 'logout',
+		'uses' =>'Auth\AuthController@getLogout'
+	]);
+
+// Registration routes...
+Route::get('auth/register',[
+		'as' => 'register-get',
+		'uses' => 'Auth\AuthController@getRegister'
+	]);
+Route::post('auth/register',[
+		'as' => 'register-post',
+		'uses' => 'Auth\AuthController@postRegister'
+	]);
+
+
+
+
 
 
 
